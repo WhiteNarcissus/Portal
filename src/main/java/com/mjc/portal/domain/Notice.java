@@ -5,12 +5,8 @@ import java.util.Date;
 public class Notice {
     private Long noticeId;
 
-    private Integer noticeSeq;
-
-    private Date noticePublishTime;
-
-    private Integer noticeState;
-
+    private Date createTime;
+    
     private String noticeTitle;
 
     private String noticeContext;
@@ -23,31 +19,17 @@ public class Notice {
         this.noticeId = noticeId;
     }
 
-    public Integer getNoticeSeq() {
-        return noticeSeq;
-    }
+   
 
-    public void setNoticeSeq(Integer noticeSeq) {
-        this.noticeSeq = noticeSeq;
-    }
+    public Date getCreateTime() {
+		return createTime;
+	}
 
-    public Date getNoticePublishTime() {
-        return noticePublishTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setNoticePublishTime(Date noticePublishTime) {
-        this.noticePublishTime = noticePublishTime;
-    }
-
-    public Integer getNoticeState() {
-        return noticeState;
-    }
-
-    public void setNoticeState(Integer noticeState) {
-        this.noticeState = noticeState;
-    }
-
-    public String getNoticeTitle() {
+	public String getNoticeTitle() {
         return noticeTitle;
     }
 

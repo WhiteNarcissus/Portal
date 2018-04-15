@@ -1,14 +1,12 @@
 package com.mjc.portal.service;
 
-import org.springframework.stereotype.Service;
+import com.mjc.portal.domain.User;
 
-@Service
-public class LoginService {
-	
-	public String login() {
-		
-		
-		return "login success";
-	}
+public interface LoginService {
+	/* 
+     * 检验用户登录业务
+     */  
+    User checkLogin(String username,String password);
+
 
 }

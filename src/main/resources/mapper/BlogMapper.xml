@@ -3,131 +3,14 @@
 <mapper namespace="com.mjc.portal.dao.BlogMapper">
   <resultMap id="BaseResultMap" type="com.mjc.portal.domain.Blog">
     <id column="blog_id" jdbcType="BIGINT" property="blogId" />
-    <result column="blog_seq" jdbcType="INTEGER" property="blogSeq" />
-    <result column="blog_state" jdbcType="INTEGER" property="blogState" />
-    <result column="blog_publish_time" jdbcType="DATE" property="blogPublishTime" />
-    <result column="blog_unpublish_time" jdbcType="DATE" property="blogUnpublishTime" />
+    <result column="blog_title" jdbcType="VARCHAR" property="blogTitle" />
+    <result column="blog_context" jdbcType="LONGVARCHAR" property="blogContext" />
     <result column="create_time" jdbcType="DATE" property="createTime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mjc.portal.domain.Blog">
-    <result column="blog_context" jdbcType="LONGVARCHAR" property="blogContext" />
-  </resultMap>
+ 
   <sql id="Base_Column_List">
-    blog_id, blog_seq, blog_state, blog_publish_time, blog_unpublish_time, create_time
+    blog_id, blog_title, blog_context,  create_time
   </sql>
-  <sql id="Blob_Column_List">
-    blog_context
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from t_blog
-    where blog_id = #{blogId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_blog
-    where blog_id = #{blogId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.mjc.portal.domain.Blog">
-    insert into t_blog (blog_id, blog_seq, blog_state, 
-      blog_publish_time, blog_unpublish_time, create_time, 
-      blog_context)
-    values (#{blogId,jdbcType=BIGINT}, #{blogSeq,jdbcType=INTEGER}, #{blogState,jdbcType=INTEGER}, 
-      #{blogPublishTime,jdbcType=DATE}, #{blogUnpublishTime,jdbcType=DATE}, #{createTime,jdbcType=DATE}, 
-      #{blogContext,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.mjc.portal.domain.Blog">
-    insert into t_blog
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="blogId != null">
-        blog_id,
-      </if>
-      <if test="blogSeq != null">
-        blog_seq,
-      </if>
-      <if test="blogState != null">
-        blog_state,
-      </if>
-      <if test="blogPublishTime != null">
-        blog_publish_time,
-      </if>
-      <if test="blogUnpublishTime != null">
-        blog_unpublish_time,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="blogContext != null">
-        blog_context,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="blogId != null">
-        #{blogId,jdbcType=BIGINT},
-      </if>
-      <if test="blogSeq != null">
-        #{blogSeq,jdbcType=INTEGER},
-      </if>
-      <if test="blogState != null">
-        #{blogState,jdbcType=INTEGER},
-      </if>
-      <if test="blogPublishTime != null">
-        #{blogPublishTime,jdbcType=DATE},
-      </if>
-      <if test="blogUnpublishTime != null">
-        #{blogUnpublishTime,jdbcType=DATE},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
-      </if>
-      <if test="blogContext != null">
-        #{blogContext,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mjc.portal.domain.Blog">
-    update t_blog
-    <set>
-      <if test="blogSeq != null">
-        blog_seq = #{blogSeq,jdbcType=INTEGER},
-      </if>
-      <if test="blogState != null">
-        blog_state = #{blogState,jdbcType=INTEGER},
-      </if>
-      <if test="blogPublishTime != null">
-        blog_publish_time = #{blogPublishTime,jdbcType=DATE},
-      </if>
-      <if test="blogUnpublishTime != null">
-        blog_unpublish_time = #{blogUnpublishTime,jdbcType=DATE},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=DATE},
-      </if>
-      <if test="blogContext != null">
-        blog_context = #{blogContext,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where blog_id = #{blogId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mjc.portal.domain.Blog">
-    update t_blog
-    set blog_seq = #{blogSeq,jdbcType=INTEGER},
-      blog_state = #{blogState,jdbcType=INTEGER},
-      blog_publish_time = #{blogPublishTime,jdbcType=DATE},
-      blog_unpublish_time = #{blogUnpublishTime,jdbcType=DATE},
-      create_time = #{createTime,jdbcType=DATE},
-      blog_context = #{blogContext,jdbcType=LONGVARCHAR}
-    where blog_id = #{blogId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mjc.portal.domain.Blog">
-    update t_blog
-    set blog_seq = #{blogSeq,jdbcType=INTEGER},
-      blog_state = #{blogState,jdbcType=INTEGER},
-      blog_publish_time = #{blogPublishTime,jdbcType=DATE},
-      blog_unpublish_time = #{blogUnpublishTime,jdbcType=DATE},
-      create_time = #{createTime,jdbcType=DATE}
-    where blog_id = #{blogId,jdbcType=BIGINT}
-  </update>
+ 
+  
 </mapper>

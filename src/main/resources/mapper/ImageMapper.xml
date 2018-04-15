@@ -68,4 +68,15 @@
       image_type = #{imageType,jdbcType=INTEGER}
     where image_id = #{imageId,jdbcType=BIGINT}
   </update>
+  
+  <insert id="addOneImage" parameterType="com.mjc.portal.domain.Image">
+     insert into t_image (image_id, image_url, image_type
+      )
+    values (#{imageId,jdbcType=BIGINT}, #{imageUrl,jdbcType=VARCHAR}, #{imageType,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+  select <include refid="Base_Column_List" />
+  from t_image
+  </select>
 </mapper>

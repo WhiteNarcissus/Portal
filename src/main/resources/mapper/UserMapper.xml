@@ -68,4 +68,9 @@
       password = #{password,jdbcType=VARCHAR}
     where userId = #{userid,jdbcType=BIGINT}
   </update>
+  <select id="selectByName" resultType="com.mjc.portal.domain.User" >
+  select <include refid="Base_Column_List" />
+  from t_user
+   where username=#{username}
+  </select>
 </mapper>

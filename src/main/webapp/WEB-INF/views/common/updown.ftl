@@ -10,8 +10,6 @@
         <input type="submit" value="上传">  
     </form>  
     <hr>  
-    <form action="file/down.do" >  
-     <input type="submit" value="下载">  
-    </form>  
+  
 </body>  
 </html>  

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!D
+OCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8">
@@ -7,13 +8,8 @@
   
   </head>
   <body>
-   
-   <a href="${basePath}/blog.do">博客</a> 	
-   
-   <a href="#">公告</a>
-   <a href="#">留言</a>
  
-
+  UnSuccess login 
 
   </body>
 </html>

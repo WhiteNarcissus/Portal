@@ -3,119 +3,15 @@
 <mapper namespace="com.mjc.portal.dao.NoticeMapper">
   <resultMap id="BaseResultMap" type="com.mjc.portal.domain.Notice">
     <id column="notice_id" jdbcType="BIGINT" property="noticeId" />
-    <result column="notice_seq" jdbcType="INTEGER" property="noticeSeq" />
-    <result column="notice_publish_time" jdbcType="DATE" property="noticePublishTime" />
-    <result column="notice_state" jdbcType="INTEGER" property="noticeState" />
+    <result column="notice_context" jdbcType="VARCHAR" property="noticeContext" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
     <result column="notice_title" jdbcType="VARCHAR" property="noticeTitle" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mjc.portal.domain.Notice">
-    <result column="notice_context" jdbcType="LONGVARCHAR" property="noticeContext" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    notice_id, notice_seq, notice_publish_time, notice_state, notice_title
-  </sql>
-  <sql id="Blob_Column_List">
-    notice_context
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from t_notice
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_notice
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.mjc.portal.domain.Notice">
-    insert into t_notice (notice_id, notice_seq, notice_publish_time, 
-      notice_state, notice_title, notice_context
+ <insert id="insertNotice">
+    insert into t_notice (notice_id, notice_context, notice_title, create_time
       )
-    values (#{noticeId,jdbcType=BIGINT}, #{noticeSeq,jdbcType=INTEGER}, #{noticePublishTime,jdbcType=DATE}, 
-      #{noticeState,jdbcType=INTEGER}, #{noticeTitle,jdbcType=VARCHAR}, #{noticeContext,jdbcType=LONGVARCHAR}
+    values (#{noticeId,jdbcType=BIGINT}, #{noticeContext,jdbcType=VARCHAR}, #{noticeTitle,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}
       )
-  </insert>
-  <insert id="insertSelective" parameterType="com.mjc.portal.domain.Notice">
-    insert into t_notice
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="noticeId != null">
-        notice_id,
-      </if>
-      <if test="noticeSeq != null">
-        notice_seq,
-      </if>
-      <if test="noticePublishTime != null">
-        notice_publish_time,
-      </if>
-      <if test="noticeState != null">
-        notice_state,
-      </if>
-      <if test="noticeTitle != null">
-        notice_title,
-      </if>
-      <if test="noticeContext != null">
-        notice_context,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="noticeId != null">
-        #{noticeId,jdbcType=BIGINT},
-      </if>
-      <if test="noticeSeq != null">
-        #{noticeSeq,jdbcType=INTEGER},
-      </if>
-      <if test="noticePublishTime != null">
-        #{noticePublishTime,jdbcType=DATE},
-      </if>
-      <if test="noticeState != null">
-        #{noticeState,jdbcType=INTEGER},
-      </if>
-      <if test="noticeTitle != null">
-        #{noticeTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="noticeContext != null">
-        #{noticeContext,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mjc.portal.domain.Notice">
-    update t_notice
-    <set>
-      <if test="noticeSeq != null">
-        notice_seq = #{noticeSeq,jdbcType=INTEGER},
-      </if>
-      <if test="noticePublishTime != null">
-        notice_publish_time = #{noticePublishTime,jdbcType=DATE},
-      </if>
-      <if test="noticeState != null">
-        notice_state = #{noticeState,jdbcType=INTEGER},
-      </if>
-      <if test="noticeTitle != null">
-        notice_title = #{noticeTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="noticeContext != null">
-        notice_context = #{noticeContext,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mjc.portal.domain.Notice">
-    update t_notice
-    set notice_seq = #{noticeSeq,jdbcType=INTEGER},
-      notice_publish_time = #{noticePublishTime,jdbcType=DATE},
-      notice_state = #{noticeState,jdbcType=INTEGER},
-      notice_title = #{noticeTitle,jdbcType=VARCHAR},
-      notice_context = #{noticeContext,jdbcType=LONGVARCHAR}
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mjc.portal.domain.Notice">
-    update t_notice
-    set notice_seq = #{noticeSeq,jdbcType=INTEGER},
-      notice_publish_time = #{noticePublishTime,jdbcType=DATE},
-      notice_state = #{noticeState,jdbcType=INTEGER},
-      notice_title = #{noticeTitle,jdbcType=VARCHAR}
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </update>
+ 
+ </insert>
 </mapper>

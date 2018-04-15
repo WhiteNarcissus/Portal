@@ -1,10 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<body>
-<h2>Hello World!</h2>
-   <form action="login.do" method="post">
+<!D
+OCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    
+    <#include "/common/head.ftl">
+  
+  </head>
+  <body>
+ 
+ <form action="login.do" method="post">
         <table>
             <tr>
                 <td>username</td>
@@ -17,9 +22,11 @@
             </tr>
             <tr>
                 <td><input type="submit" value="登录"></td>
-                <td><input type="reset"  value="重置"></td> 
-           </tr>
+            </tr>
         </table>
     </form>
-</body>
+
+  </body>
 </html>
+
+

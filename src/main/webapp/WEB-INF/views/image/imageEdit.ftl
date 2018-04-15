@@ -7,14 +7,9 @@
   
   </head>
   <body>
-   
-   <a href="${basePath}/blog.do">博客</a> 	
-   
-   <a href="#">公告</a>
-   <a href="#">留言</a>
  
-
-
+ imageEdit
+ <#include "/common/imageUpload.ftl">
   </body>
 </html>
 
