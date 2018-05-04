@@ -10,8 +10,8 @@
    
    <a href="${basePath}/blog.do">博客</a> 	
    
-   <a href="#">公告</a>
-   <a href="#">留言</a>
+   <a href="${basePath}/notice.do">公告</a>
+   <a href="${basePath}/image.do">图片</a>
  
 
 

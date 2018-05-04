@@ -10,7 +10,7 @@
    
  
    <#list imageList as image>
-     图片序号:${ image_index}   说明：${image.imageUrl} <br/>
+     <br/>  图片序号:${ image_index}   说明：${image.imageUrl} <br/>
    <a href="#"> <img  src="http://localhost:8080${basePath}/${image.imageUrl}"></a>     
    </#list>
   

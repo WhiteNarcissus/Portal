@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td><input type="submit" value="登录"></td>
-                <td><input type="reset"  value="重置"></td> 
+                <td><input type="reset"  value="注册"></td> 
            </tr>
         </table>
     </form>

@@ -23,7 +23,16 @@ public class ImageController {
     @Autowired  
 	private ImageService imageService;
 	
-	
+    @RequestMapping("/image")
+	public ModelAndView image() {
+    	 ModelAndView mv = new ModelAndView();
+    	 List<Image> list = this.imageService.selectAll();	
+         
+         mv.addObject("imageList",list );
+         mv.setViewName("image/image");
+      
+         return mv;  
+	}
 	@RequestMapping("/imageEdit")
 	public ModelAndView imageEdit() {
         ModelAndView mv = new ModelAndView();

@@ -1,6 +1,7 @@
 package com.mjc.portal.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +20,18 @@ public class NoticeController {
 	
 	
 	@RequestMapping("/notice")
-	public String blog() {
- 
-	  return "notice/notice"; 
+	public ModelAndView blog() {
+		  List<Notice> noticeList=noticeService.noticeList();
+		  ModelAndView mv = new ModelAndView();
+		  mv.addObject("noticeList", noticeList);
+		  mv.setViewName("/notice/notice");
+	  return mv; 
 	}
+	
 	@RequestMapping("/noticeEdit")
 	public  ModelAndView noticeEdit() {
 		 ModelAndView mv = new ModelAndView();
+		
 	        mv.setViewName("/notice/noticeEdit");
      return mv;
 	}
@@ -38,9 +44,9 @@ public class NoticeController {
       nt.setCreateTime(new Date());
       nt.setNoticeContext(notice.getNoticeContext());
       nt.setNoticeTitle(notice.getNoticeTitle());
+      nt.setCreateTime(new Date());
       noticeService.insertNotice(nt);	
-      
-     
+           
      return "notice/noticeEdit";
 	}
 	

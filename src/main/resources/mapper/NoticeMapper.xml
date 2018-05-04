@@ -14,4 +14,8 @@
       )
  
  </insert>
+ 
+ <select id="noticeList"  resultMap="BaseResultMap">
+  select * from t_notice  
+ </select>
 </mapper>
