@@ -3,6 +3,7 @@ package com.mjc.portal.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class LoginController {
 	 
 	@RequestMapping("/login")
 	public String login(User user,Model model) {
-		
+
 		 //调用service方法
         user = loginService.checkLogin(user.getUsername(), user.getPassword());        
         //若有user则添加到model里并且跳转到成功页面
